@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  cookiex_app:
+    container_name: cookiex-app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8081:8081"

@@ -1,0 +1,15 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: httpbin-standalone
+spec:
+  selector:
+    matchLabels:
+      app: httpbin
+  action: CUSTOM
+  provider:
+    name: "cookiex-extauth" # can also use the `example-ext-authz-http`
+  rules:
+    - to:
+        - operation:
+            paths: ["/headers"]

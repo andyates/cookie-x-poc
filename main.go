@@ -10,6 +10,7 @@ import (
 func main() {
 	router := gin.Default()
 	router.GET("/", cookieX)
+	router.GET("/headers", cookieX)
 
 	router.Run("0.0.0.0:8081")
 }

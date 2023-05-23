@@ -20,7 +20,8 @@ func cookieX(c *gin.Context) {
 	cookie := c.GetHeader("Cookie")
 	log.Println("cookie:", cookie)
 	if cookie == "valid" {
-		c.Header("Hello", "World")
+		c.Header("authorization", "jwt")
+		c.Header("hello", "World2")
 		status = http.StatusOK
 	}
 	c.Status(status)

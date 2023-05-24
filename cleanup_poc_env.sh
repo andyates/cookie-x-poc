@@ -1,19 +1,20 @@
 #!/bin/bash
 # (C) Copyright 2023 Hewlett Packard Enterprise Development LP
 
+set -e
 
-IstioPath="$HOME/istio-1.17.2"
+ISTIOPATH="$HOME/istio-1.12.2/"
 COOKIEXIMAGE="cookie-x-poc"
 
 
-if [ -z "$IstioPath" ]
-then
-        echo "\nIstio installation not found"
+if [ ! -d "$IstioPath" ]; then
+        echo "Istio installation not found: $ISTIOPATH"
+        exit 1
 else
-        echo "\nIstioPath: $IstioPath"
+        echo "IstioPath installation: $ISTIOPATH"
 fi
 
-pushd $IstioPath
+pushd $ISTIOPATH
 
 kubectl delete -f samples/addons
 sleep 3

@@ -3,11 +3,11 @@
 
 set -e
 
-ISTIOPATH="$HOME/istio-1.12.2/"
+ISTIOPATH="$HOME/istio-1.17.2"
 COOKIEXIMAGE="cookie-x-poc"
 
 
-if [ ! -d "$IstioPath" ]; then
+if [ ! -d "$ISTIOPATH" ]; then
         echo "Istio installation not found: $ISTIOPATH"
         exit 1
 else
@@ -15,6 +15,9 @@ else
 fi
 
 pushd $ISTIOPATH
+
+# if errors happens from now on, ignore and keep executing
+set +e
 
 kubectl delete -f samples/addons
 sleep 3

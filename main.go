@@ -9,8 +9,10 @@ import (
 
 func main() {
 	router := gin.Default()
-	router.GET("/", cookieX)
-	router.GET("/headers", cookieX)
+	//https://github.com/gin-gonic/gin/issues/1207
+	router.Any("/*proxyPath", cookieX)
+	//router.GET("/", cookieX)
+	//router.GET("/headers", cookieX)
 
 	router.Run("0.0.0.0:8081")
 }

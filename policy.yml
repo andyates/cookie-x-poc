@@ -11,5 +11,8 @@ spec:
     name: "cookiex-extauth" # can also use the `example-ext-authz-http`
   rules:
     - to:
-        - operation:
-            paths: ["/headers"]
+      #        - operation:
+      #            paths: ["/headers"]
+      when:
+        - key: request.headers[Cookie]
+          values: ["*"]

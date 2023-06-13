@@ -4,11 +4,15 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/memstore"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	router := gin.Default()
+	store := memstore.NewStore([]byte("secret"))
+	router.Use(sessions.Sessions("mysession", store))
 	//https://github.com/gin-gonic/gin/issues/1207
 	router.Any("/*proxyPath", cookieX)
 	//router.GET("/", cookieX)
